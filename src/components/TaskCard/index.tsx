@@ -1,5 +1,10 @@
 import React from 'react';
-import { StyledTaskCard, StyledPriorityLabel } from './styled';
+import {
+  StyledTaskCard,
+  StyledPriorityLabel,
+  StyledH3,
+  StyledP,
+} from './styled';
 import { TaskCardProps } from '@/types/TaskCardProps';
 
 const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
@@ -10,8 +15,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
           {task.priority}
         </StyledPriorityLabel>
       )}
-      <h3>{task.title}</h3>
-      <p>{task.description}</p>
+      <StyledH3>{task.title}</StyledH3>
+      <StyledP>{task.description}</StyledP>
     </StyledTaskCard>
   );
 };

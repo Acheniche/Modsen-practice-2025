@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledTaskCard = styled.div`
   background: white;
-  padding: 10px;
+  padding: 12px;
   border-radius: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
@@ -23,6 +23,7 @@ export const StyledPriorityLabel = styled.button<{
   transition: box-shadow 0.3s;
   font-weight: bold;
   border: none;
+  margin-bottom: 12px;
   color: ${(props) =>
     props.priority === 'High'
       ? '#F43F5E'
@@ -45,4 +46,22 @@ export const StyledPriorityLabel = styled.button<{
             ? '#EEF2FF'
             : '#F0FDF4'};
   }
+`;
+
+export const StyledH3 = styled.h3`
+font-family: Plus Jakarta Sans;
+font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+letter-spacing: -0.7%;
+color: background: #1E293B;
+`;
+
+export const StyledP = styled.p`
+  font-family: Plus Jakarta Sans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25.6px;
+  letter-spacing: 0%;
+  color: #475569;
 `;

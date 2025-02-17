@@ -1,8 +1,9 @@
 import React from 'react';
-import { Column, ColumnHeader } from './styled';
+import { Column } from './styled';
 import { ColumnProps } from '@/types/ColumnProps';
 import AddTaskButton from '@components/AddTaskButton';
 import TaskCard from '@components/TaskCard';
+import ColumnHeader from '@components/ColumnHeader';
 
 const ProgressColumn: React.FC<ColumnProps> = ({
   title,
@@ -13,7 +14,11 @@ const ProgressColumn: React.FC<ColumnProps> = ({
 }) => {
   return (
     <Column color={color}>
-      <ColumnHeader>{title}</ColumnHeader>
+      <ColumnHeader
+        buttonPrimaryColor={buttonPrimaryColor}
+        tasks={tasks}
+        title={title}
+      ></ColumnHeader>
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} />
       ))}
