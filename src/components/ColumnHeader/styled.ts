@@ -72,3 +72,17 @@ export const Horizontal = styled.div`
   transform: translateY(-50%);
   background: #ffffff;
 `;
+
+export const EditInput = styled.input<{ primary: string }>`
+  font-family: Plus Jakarta Sans;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.7%;
+  border: none;
+  outline: none;
+  color: #fff;
+  display: inline-block;
+  width: 70%;
+  background-color: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
+`;
