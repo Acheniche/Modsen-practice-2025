@@ -25,6 +25,7 @@ const ProgressColumn: React.FC<ColumnProps> = ({
       <AddTaskButton
         buttonPrimaryColor={buttonPrimaryColor}
         buttonSecondaryColor={buttonSecondaryColor}
+        column={title}
       >
         Add Task...
       </AddTaskButton>

@@ -8,27 +8,38 @@ import {
   TaskForm,
   TitleInput,
 } from './styled';
-import { ColumnProps } from '@/types/ColumnProps';
+import { useDispatch } from 'react-redux';
+import { addTask } from '@/store/reducers/TasksSlice';
+import { PriorityType } from '@/types/Priority';
 
-const AddTaskButton: React.FC<
-  Pick<ColumnProps, 'buttonPrimaryColor' | 'buttonSecondaryColor'> & {
-    children: React.ReactNode;
-  }
-> = ({ buttonPrimaryColor, buttonSecondaryColor, children }) => {
+const AddTaskButton: React.FC<{
+  buttonPrimaryColor: string;
+  buttonSecondaryColor: string;
+  column: string;
+  children: React.ReactNode;
+}> = ({ buttonPrimaryColor, buttonSecondaryColor, column, children }) => {
+  const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('Priority');
+  const [priority, setPriority] = useState<PriorityType>(undefined);
 
   const handleSave = () => {
     if (title.trim()) {
-      console.log({ title, description, priority });
+      dispatch(
+        addTask({
+          column,
+          task: { id: Date.now(), title, description, priority },
+        }),
+      );
       setTitle('');
       setDescription('');
+      setPriority(undefined);
       setIsEditing(false);
     } else {
       setTitle('');
       setDescription('');
+      setPriority(undefined);
       setIsEditing(false);
     }
   };
@@ -38,10 +49,10 @@ const AddTaskButton: React.FC<
       {isEditing ? (
         <TaskForm>
           <Select
-            value={priority}
-            onChange={(e) => setPriority(e.target.value)}
+            value={priority ?? ''}
+            onChange={(e) => setPriority(e.target.value as PriorityType)}
           >
-            <option value="undefined">Priority</option>
+            <option value="">Priority</option>
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
