@@ -8,8 +8,13 @@ import {
 import { TaskCardProps } from '@/types/TaskCardProps';
 
 const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
+  const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
+    event.dataTransfer.setData('taskId', task.id.toString());
+    event.dataTransfer.setData('taskColumn', task.column);
+  };
+
   return (
-    <StyledTaskCard>
+    <StyledTaskCard draggable onDragStart={handleDragStart}>
       {task.priority && (
         <StyledPriorityLabel priority={task.priority}>
           {task.priority}

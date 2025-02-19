@@ -21,13 +21,22 @@ const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<{ column: string; task: Task }>) => {
-      state.columns[action.payload.column].push(action.payload.task);
+    addTask: (
+      state,
+      action: PayloadAction<{ column: string; task: Omit<Task, 'column'> }>,
+    ) => {
+      const taskWithColumn = {
+        ...action.payload.task,
+        column: action.payload.column,
+      };
+      state.columns[action.payload.column].push(taskWithColumn);
       localStorage.setItem('tasks', JSON.stringify(state.columns));
     },
+
     setTasks: (state, action: PayloadAction<Record<string, Task[]>>) => {
       state.columns = action.payload;
     },
+
     addColumn: (state) => {
       let newColumnName = 'New Column';
       let counter = 1;
@@ -40,6 +49,7 @@ const tasksSlice = createSlice({
       state.columns[newColumnName] = [];
       localStorage.setItem('tasks', JSON.stringify(state.columns));
     },
+
     renameColumn: (
       state,
       action: PayloadAction<{ oldName: string; newName: string }>,
@@ -54,9 +64,30 @@ const tasksSlice = createSlice({
         localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
+
+    moveTask: (
+      state,
+      action: PayloadAction<{
+        taskId: number;
+        fromColumn: string;
+        toColumn: string;
+      }>,
+    ) => {
+      const { taskId, fromColumn, toColumn } = action.payload;
+      const taskIndex = state.columns[fromColumn].findIndex(
+        (task) => task.id === taskId,
+      );
+
+      if (taskIndex !== -1) {
+        const [movedTask] = state.columns[fromColumn].splice(taskIndex, 1);
+        const updatedTask = { ...movedTask, column: toColumn };
+        state.columns[toColumn].push(updatedTask);
+        localStorage.setItem('tasks', JSON.stringify(state.columns));
+      }
+    },
   },
 });
 
-export const { addTask, setTasks, addColumn, renameColumn } =
+export const { addTask, setTasks, addColumn, renameColumn, moveTask } =
   tasksSlice.actions;
 export default tasksSlice;

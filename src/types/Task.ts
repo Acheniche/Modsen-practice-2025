@@ -3,4 +3,5 @@ export interface Task {
   title: string;
   description: string;
   priority?: 'High' | 'Medium' | 'Low' | undefined;
+  column: string;
 }

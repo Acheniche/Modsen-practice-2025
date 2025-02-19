@@ -4,6 +4,8 @@ import { ColumnProps } from '@/types/ColumnProps';
 import AddTaskButton from '@components/AddTaskButton';
 import TaskCard from '@components/TaskCard';
 import ColumnHeader from '@components/ColumnHeader';
+import { useDispatch } from 'react-redux';
+import { moveTask } from '@/store/reducers/TasksSlice';
 
 const ProgressColumn: React.FC<ColumnProps> = ({
   title,
@@ -12,13 +14,29 @@ const ProgressColumn: React.FC<ColumnProps> = ({
   buttonPrimaryColor,
   buttonSecondaryColor,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const taskId = parseInt(event.dataTransfer.getData('taskId'), 10);
+    const sourceColumn = event.dataTransfer.getData('taskColumn');
+
+    if (sourceColumn !== title) {
+      dispatch(moveTask({ taskId, fromColumn: sourceColumn, toColumn: title }));
+    }
+  };
+
   return (
-    <Column color={color}>
+    <Column
+      color={color}
+      onDragOver={(event) => event.preventDefault()}
+      onDrop={handleDrop}
+    >
       <ColumnHeader
         buttonPrimaryColor={buttonPrimaryColor}
         tasks={tasks}
         title={title}
-      ></ColumnHeader>
+      />
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} />
       ))}
