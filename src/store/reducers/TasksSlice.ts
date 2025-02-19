@@ -96,6 +96,14 @@ const tasksSlice = createSlice({
       );
       localStorage.setItem('tasks', JSON.stringify(state.columns));
     },
+
+    removeColumn: (state, action: PayloadAction<string>) => {
+      const columnName = action.payload;
+      if (state.columns[columnName]) {
+        delete state.columns[columnName];
+        localStorage.setItem('tasks', JSON.stringify(state.columns));
+      }
+    },
   },
 });
 
@@ -106,5 +114,6 @@ export const {
   renameColumn,
   moveTask,
   removeTask,
+  removeColumn,
 } = tasksSlice.actions;
 export default tasksSlice;

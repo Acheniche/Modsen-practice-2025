@@ -1,6 +1,7 @@
 import { ColumnProps } from '@/types/ColumnProps';
 import {
   ColumnHeaderWrapper,
+  DeleteButton,
   EditInput,
   Horizontal,
   Plus,
@@ -9,7 +10,7 @@ import {
   Vertical,
 } from './styled';
 import { useDispatch } from 'react-redux';
-import { renameColumn } from '@/store/reducers/TasksSlice';
+import { removeColumn, renameColumn } from '@/store/reducers/TasksSlice';
 import { useState } from 'react';
 
 const ColumnHeader: React.FC<
@@ -26,18 +27,24 @@ const ColumnHeader: React.FC<
     setIsEditing(!isEditing);
   };
 
+  const handleDelete = () => {
+    dispatch(removeColumn(title));
+  };
+
   return (
     <ColumnHeaderWrapper primary={buttonPrimaryColor}>
       <TasksCounter primary={buttonPrimaryColor}>{tasks.length}</TasksCounter>
       {isEditing ? (
-        <EditInput
-          primary={buttonPrimaryColor}
-          type="text"
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-          onBlur={handleRename}
-          autoFocus
-        />
+        <>
+          <EditInput
+            primary={buttonPrimaryColor}
+            type="text"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            autoFocus
+          />
+          <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+        </>
       ) : (
         <StyledColumnHeader>{title}</StyledColumnHeader>
       )}

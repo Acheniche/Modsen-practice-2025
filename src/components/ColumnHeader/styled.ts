@@ -56,7 +56,7 @@ export const Vertical = styled.div`
   top: 0;
   left: 50%;
   width: 2.63px;
-  height: 100%;
+  height: 18.75px;
   border-radius: 5px;
   transform: translateX(-50%);
   background: #ffffff;
@@ -66,7 +66,7 @@ export const Horizontal = styled.div`
   position: absolute;
   top: 50%;
   left: 0;
-  width: 100%;
+  width: 18.75px;
   border-radius: 5px;
   height: 2.63px;
   transform: translateY(-50%);
@@ -85,4 +85,23 @@ export const EditInput = styled.input<{ primary: string }>`
   display: inline-block;
   width: 70%;
   background-color: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
+`;
+
+export const DeleteButton = styled.button`
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: box-shadow 0.3s;
+  font-weight: bold;
+  border: none;
+  color: #f43f5e;
+  background: #fff1f2;
+
+  &:hover {
+    box-shadow: 0 0 10px 5px #fff1f2;
+  }
 `;
