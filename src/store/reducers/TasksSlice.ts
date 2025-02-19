@@ -85,9 +85,26 @@ const tasksSlice = createSlice({
         localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
+
+    removeTask: (
+      state,
+      action: PayloadAction<{ taskId: number; column: string }>,
+    ) => {
+      const { taskId, column } = action.payload;
+      state.columns[column] = state.columns[column].filter(
+        (task) => task.id !== taskId,
+      );
+      localStorage.setItem('tasks', JSON.stringify(state.columns));
+    },
   },
 });
 
-export const { addTask, setTasks, addColumn, renameColumn, moveTask } =
-  tasksSlice.actions;
+export const {
+  addTask,
+  setTasks,
+  addColumn,
+  renameColumn,
+  moveTask,
+  removeTask,
+} = tasksSlice.actions;
 export default tasksSlice;

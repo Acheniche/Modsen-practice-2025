@@ -65,3 +65,28 @@ export const StyledP = styled.p`
   letter-spacing: 0%;
   color: #475569;
 `;
+
+export const DeleteButton = styled.button`
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: box-shadow 0.3s;
+  font-weight: bold;
+  border: none;
+  color: #f43f5e;
+  background: #fff1f2;
+  margin-bottom: 12px;
+
+  &:hover {
+    box-shadow: 0 0 10px 5px #fff1f2;
+  }
+`;
+
+export const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
