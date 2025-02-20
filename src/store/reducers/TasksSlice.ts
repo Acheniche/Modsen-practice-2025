@@ -9,7 +9,7 @@ type TasksState = {
   columns: ColumnsState;
 };
 
-const initialState: TasksState = {
+export const initialState: TasksState = {
   columns: {
     'To Do': [],
     'In Progress': [],
@@ -34,7 +34,11 @@ const tasksSlice = createSlice({
     },
 
     setTasks: (state, action: PayloadAction<Record<string, Task[]>>) => {
-      state.columns = action.payload;
+      if (Object.keys(action.payload).length > 0) {
+        state.columns = { ...action.payload };
+      } else {
+        state.columns = { ...initialState.columns };
+      }
     },
 
     addColumn: (state) => {

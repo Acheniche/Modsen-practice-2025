@@ -5,9 +5,11 @@ export const StyledTaskCard = styled.div`
   padding: 12px;
   border-radius: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   border: 1px solid rgba(226, 232, 240, 1);
   text-align: left;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const StyledPriorityLabel = styled.button<{
@@ -143,6 +145,7 @@ export const Select = styled.select`
   cursor: pointer;
   width: fit-content;
   outline: none;
+  margin-bottom: 12px;
 `;
 
 export const EditButton = styled.button`

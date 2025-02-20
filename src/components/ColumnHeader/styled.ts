@@ -11,9 +11,8 @@ export const StyledColumnHeader = styled.h2`
 
 export const ColumnHeaderWrapper = styled.div<{ primary: string }>`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  width: 289.6666564941406;
-  height: 48;
   gap: 12px;
   border-radius: 24px;
   padding-top: 8px;
@@ -82,8 +81,7 @@ export const EditInput = styled.input<{ primary: string }>`
   border: none;
   outline: none;
   color: #fff;
-  display: inline-block;
-  width: 70%;
+  width: 40%;
   background-color: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
 `;
 
@@ -100,6 +98,7 @@ export const DeleteButton = styled.button`
   border: none;
   color: #f43f5e;
   background: #fff1f2;
+  margin-left: auto;
 
   &:hover {
     box-shadow: 0 0 10px 5px #fff1f2;
