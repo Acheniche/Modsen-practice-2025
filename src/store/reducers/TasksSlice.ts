@@ -108,6 +108,28 @@ const tasksSlice = createSlice({
         localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
+
+    updateTask: (
+      state,
+      action: PayloadAction<{
+        taskId: number;
+        column: string;
+        updatedTask: Partial<Omit<Task, 'id' | 'column'>>;
+      }>,
+    ) => {
+      const { taskId, column, updatedTask } = action.payload;
+      const taskIndex = state.columns[column].findIndex(
+        (task) => task.id === taskId,
+      );
+
+      if (taskIndex !== -1) {
+        state.columns[column][taskIndex] = {
+          ...state.columns[column][taskIndex],
+          ...updatedTask,
+        };
+        localStorage.setItem('tasks', JSON.stringify(state.columns));
+      }
+    },
   },
 });
 
@@ -119,5 +141,6 @@ export const {
   moveTask,
   removeTask,
   removeColumn,
+  updateTask,
 } = tasksSlice.actions;
 export default tasksSlice;
