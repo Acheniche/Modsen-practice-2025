@@ -58,9 +58,13 @@ const tasksSlice = createSlice({
         state.columns[action.payload.oldName] &&
         !state.columns[action.payload.newName]
       ) {
-        state.columns[action.payload.newName] =
-          state.columns[action.payload.oldName];
-        delete state.columns[action.payload.oldName];
+        const entries = Object.entries(state.columns).map(([key, value]) =>
+          key === action.payload.oldName
+            ? [action.payload.newName, value]
+            : [key, value],
+        );
+
+        state.columns = Object.fromEntries(entries);
         localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
