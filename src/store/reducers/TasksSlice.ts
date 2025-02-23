@@ -73,15 +73,32 @@ const tasksSlice = createSlice({
       }
     },
 
+    reorderTasks: (
+      state,
+      action: PayloadAction<{
+        column: string;
+        sourceIndex: number;
+        destinationIndex: number;
+      }>,
+    ) => {
+      const { column, sourceIndex, destinationIndex } = action.payload;
+      const tasks = [...state.columns[column]];
+      const [reorderedTask] = tasks.splice(sourceIndex, 1);
+      tasks.splice(destinationIndex, 0, reorderedTask);
+      state.columns[column] = tasks;
+      localStorage.setItem('tasks', JSON.stringify(state.columns));
+    },
+
     moveTask: (
       state,
       action: PayloadAction<{
         taskId: number;
         fromColumn: string;
         toColumn: string;
+        toIndex?: number;
       }>,
     ) => {
-      const { taskId, fromColumn, toColumn } = action.payload;
+      const { taskId, fromColumn, toColumn, toIndex } = action.payload;
       const taskIndex = state.columns[fromColumn].findIndex(
         (task) => task.id === taskId,
       );
@@ -89,7 +106,12 @@ const tasksSlice = createSlice({
       if (taskIndex !== -1) {
         const [movedTask] = state.columns[fromColumn].splice(taskIndex, 1);
         const updatedTask = { ...movedTask, column: toColumn };
-        state.columns[toColumn].push(updatedTask);
+
+        if (toIndex !== undefined) {
+          state.columns[toColumn].splice(toIndex, 0, updatedTask);
+        } else {
+          state.columns[toColumn].push(updatedTask);
+        }
         localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
@@ -146,5 +168,6 @@ export const {
   removeTask,
   removeColumn,
   updateTask,
+  reorderTasks,
 } = tasksSlice.actions;
 export default tasksSlice;
