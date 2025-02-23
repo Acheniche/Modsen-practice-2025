@@ -10,7 +10,11 @@ import {
   Vertical,
 } from './styled';
 import { useDispatch } from 'react-redux';
-import { removeColumn, renameColumn } from '@/store/reducers/TasksSlice';
+import {
+  removeColumn,
+  renameColumn,
+  reorderColumns,
+} from '@/store/reducers/TasksSlice';
 import { useState } from 'react';
 
 const ColumnHeader: React.FC<
@@ -31,8 +35,31 @@ const ColumnHeader: React.FC<
     dispatch(removeColumn(title));
   };
 
+  const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
+    event.dataTransfer.setData('columnName', title);
+  };
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const draggedColumn = event.dataTransfer.getData('columnName');
+    if (draggedColumn && draggedColumn !== title) {
+      dispatch(reorderColumns({ from: draggedColumn, to: title }));
+    }
+  };
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  };
+
   return (
-    <ColumnHeaderWrapper primary={buttonPrimaryColor}>
+    <ColumnHeaderWrapper
+      primary={buttonPrimaryColor}
+      draggable
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
       <TasksCounter primary={buttonPrimaryColor}>{tasks.length}</TasksCounter>
       {isEditing ? (
         <>

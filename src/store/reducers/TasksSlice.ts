@@ -99,20 +99,23 @@ const tasksSlice = createSlice({
       }>,
     ) => {
       const { taskId, fromColumn, toColumn, toIndex } = action.payload;
-      const taskIndex = state.columns[fromColumn].findIndex(
-        (task) => task.id === taskId,
-      );
 
-      if (taskIndex !== -1) {
-        const [movedTask] = state.columns[fromColumn].splice(taskIndex, 1);
-        const updatedTask = { ...movedTask, column: toColumn };
+      if (state.columns[fromColumn] && state.columns[toColumn]) {
+        const taskIndex = state.columns[fromColumn].findIndex(
+          (task) => task.id === taskId,
+        );
 
-        if (toIndex !== undefined) {
-          state.columns[toColumn].splice(toIndex, 0, updatedTask);
-        } else {
-          state.columns[toColumn].push(updatedTask);
+        if (taskIndex !== -1) {
+          const [movedTask] = state.columns[fromColumn].splice(taskIndex, 1);
+          const updatedTask = { ...movedTask, column: toColumn };
+
+          if (toIndex !== undefined) {
+            state.columns[toColumn].splice(toIndex, 0, updatedTask);
+          } else {
+            state.columns[toColumn].push(updatedTask);
+          }
+          localStorage.setItem('tasks', JSON.stringify(state.columns));
         }
-        localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
 
@@ -156,6 +159,29 @@ const tasksSlice = createSlice({
         localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
+
+    reorderColumns: (
+      state,
+      action: PayloadAction<{ from: string; to: string }>,
+    ) => {
+      const columnNames = Object.keys(state.columns);
+      const fromIndex = columnNames.indexOf(action.payload.from);
+      const toIndex = columnNames.indexOf(action.payload.to);
+
+      if (fromIndex !== -1 && toIndex !== -1) {
+        const newOrder = [...columnNames];
+        const [movedColumn] = newOrder.splice(fromIndex, 1);
+        newOrder.splice(toIndex, 0, movedColumn);
+
+        const newColumns: ColumnsState = {};
+        newOrder.forEach((name) => {
+          newColumns[name] = state.columns[name];
+        });
+
+        state.columns = newColumns;
+        localStorage.setItem('tasks', JSON.stringify(state.columns));
+      }
+    },
   },
 });
 
@@ -169,5 +195,6 @@ export const {
   removeColumn,
   updateTask,
   reorderTasks,
+  reorderColumns,
 } = tasksSlice.actions;
 export default tasksSlice;
