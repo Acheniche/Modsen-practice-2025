@@ -11,9 +11,8 @@ export const StyledColumnHeader = styled.h2`
 
 export const ColumnHeaderWrapper = styled.div<{ primary: string }>`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  width: 289.6666564941406;
-  height: 48;
   gap: 12px;
   border-radius: 24px;
   padding-top: 8px;
@@ -56,7 +55,7 @@ export const Vertical = styled.div`
   top: 0;
   left: 50%;
   width: 2.63px;
-  height: 100%;
+  height: 18.75px;
   border-radius: 5px;
   transform: translateX(-50%);
   background: #ffffff;
@@ -66,9 +65,42 @@ export const Horizontal = styled.div`
   position: absolute;
   top: 50%;
   left: 0;
-  width: 100%;
+  width: 18.75px;
   border-radius: 5px;
   height: 2.63px;
   transform: translateY(-50%);
   background: #ffffff;
+`;
+
+export const EditInput = styled.input<{ primary: string }>`
+  font-family: Plus Jakarta Sans;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.7%;
+  border: none;
+  outline: none;
+  color: #fff;
+  width: 40%;
+  background-color: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
+`;
+
+export const DeleteButton = styled.button`
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: box-shadow 0.3s;
+  font-weight: bold;
+  border: none;
+  color: #f43f5e;
+  background: #fff1f2;
+  margin-left: auto;
+
+  &:hover {
+    box-shadow: 0 0 10px 5px #fff1f2;
+  }
 `;
