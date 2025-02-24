@@ -5,5 +5,5 @@ export const TaskBoard = styled.div`
   gap: 16px;
   padding: 32px;
   justify-content: left;
-  margin: 104px auto;
+  margin: 104px 0 0 0;
 `;

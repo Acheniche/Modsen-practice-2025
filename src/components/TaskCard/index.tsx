@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import {
-  StyledTaskCard,
-  StyledPriorityLabel,
-  StyledH3,
-  StyledP,
-  DeleteButton,
-  EditButton,
-  StyledButtonWrapper,
-  TitleInput,
-  DescriptionInput,
-  SaveButton,
-  Select,
-} from './styled';
-import { TaskCardProps } from '@/types/TaskCardProps';
 import { useDispatch } from 'react-redux';
+
 import { removeTask, updateTask } from '@/store/reducers/TasksSlice';
 import { PriorityType } from '@/types/Priority';
+import { TaskCardProps } from '@/types/TaskCardProps';
+
+import {
+  DeleteButton,
+  DescriptionInput,
+  EditButton,
+  SaveButton,
+  Select,
+  StyledButtonWrapper,
+  StyledH3,
+  StyledP,
+  StyledPriorityLabel,
+  StyledTaskCard,
+  TitleInput,
+} from './styled';
 
 const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   const dispatch = useDispatch();
@@ -51,7 +53,11 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   };
 
   return (
-    <StyledTaskCard draggable onDragStart={handleDragStart}>
+    <StyledTaskCard
+      draggable
+      onDragStart={handleDragStart}
+      priority={task.priority}
+    >
       {isEditing ? (
         <>
           <Select
@@ -68,6 +74,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <DescriptionInput
+            placeholder="Add description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />

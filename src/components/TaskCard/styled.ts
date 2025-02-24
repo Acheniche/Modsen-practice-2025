@@ -1,21 +1,44 @@
 import styled from 'styled-components';
 
-export const StyledTaskCard = styled.div`
-  background: white;
+export const StyledTaskCard = styled.div<{
+  priority?: 'High' | 'Medium' | 'Low';
+}>`
+  background: var(--color-white);
   padding: 12px;
   border-radius: 24px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 12px;
-  border: 1px solid rgba(226, 232, 240, 1);
+  border: 1px solid
+    ${(props) =>
+      props.priority === 'High'
+        ? 'var(--color-red)'
+        : props.priority === 'Medium'
+          ? 'var(--color-purple)'
+          : props.priority === 'Low'
+            ? 'var(--color-green)'
+            : 'var(--color-dark-grey)'};
+
   text-align: left;
   display: flex;
   flex-direction: column;
+  transition: 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 10px 5px
+      ${(props) =>
+        props.priority === 'High'
+          ? 'var(--color-back-red)'
+          : props.priority === 'Medium'
+            ? 'var(--color-back-blue)'
+            : props.priority === 'Low'
+              ? 'var(--color-back-green)'
+              : 'var(--color-dark-grey)'};
+  }
 `;
 
 export const StyledPriorityLabel = styled.button<{
   priority?: 'High' | 'Medium' | 'Low';
 }>`
-  font-size: 12px;
+  font-size: var(--min-font-size);
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 12px;
@@ -28,48 +51,48 @@ export const StyledPriorityLabel = styled.button<{
   margin-bottom: 12px;
   color: ${(props) =>
     props.priority === 'High'
-      ? '#F43F5E'
+      ? 'var(--color-red)'
       : props.priority === 'Medium'
-        ? '#4F46E5'
-        : '#22C55E'};
+        ? 'var(--color-purple)'
+        : 'var(--color-green)'};
   background: ${(props) =>
     props.priority === 'High'
-      ? '#FFF1F2'
+      ? 'var(--color-back-red)'
       : props.priority === 'Medium'
-        ? '#EEF2FF'
-        : '#F0FDF4'};
+        ? 'var(--color-back-blue)'
+        : 'var(--color-back-green)'};
 
   &:hover {
     box-shadow: 0 0 10px 5px
       ${(props) =>
         props.priority === 'High'
-          ? '#FFF1F2'
+          ? 'var(--color-back-red)'
           : props.priority === 'Medium'
-            ? '#EEF2FF'
-            : '#F0FDF4'};
+            ? 'var(--color-back-blue)'
+            : 'var(--color-back-green)'};
   }
 `;
 
 export const StyledH3 = styled.h3`
-font-family: Plus Jakarta Sans;
-font-weight: 700;
-font-size: 16px;
-line-height: 22px;
-letter-spacing: -0.7%;
-color: background: #1E293B;
+  font-family: var(--font-family-default);
+  font-weight: 700;
+  font-size: var(--max-font-size);
+  line-height: 22px;
+  letter-spacing: -0.7%;
+  color: var(--color-title);
 `;
 
 export const StyledP = styled.p`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--max-font-size);
   line-height: 25.6px;
   letter-spacing: 0%;
-  color: #475569;
+  color: var(--color-description);
 `;
 
 export const DeleteButton = styled.button`
-  font-size: 12px;
+  font-size: var(--min-font-size);
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 12px;
@@ -79,12 +102,12 @@ export const DeleteButton = styled.button`
   transition: box-shadow 0.3s;
   font-weight: bold;
   border: none;
-  color: #f43f5e;
-  background: #fff1f2;
+  color: var(--color-red);
+  background: var(--color-back-red);
   margin-bottom: 12px;
 
   &:hover {
-    box-shadow: 0 0 10px 5px #fff1f2;
+    box-shadow: 0 0 10px 5px var(--color-back-red);
   }
 `;
 
@@ -94,51 +117,51 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const TitleInput = styled.input`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--max-font-size);
   line-height: 22px;
   letter-spacing: -0.7%;
-  color: #1e293b;
+  color: var(--color-title);
   border: none;
 `;
 
 export const DescriptionInput = styled.input`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--max-font-size);
   line-height: 25.6px;
   letter-spacing: 0%;
-  color: #475569;
+  color: var(--color-description);
   border: none;
 `;
 
 export const SaveButton = styled.button`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--mid-font-size);
   line-height: 20px;
   letter-spacing: -0.6%;
-  color: #475569;
+  color: var(--color-description);
   border: none;
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--color-white);
   text-align: left;
   padding: 2px;
   width: 30px;
 `;
 
 export const Select = styled.select`
-  font-family: 'Plus Jakarta Sans';
+  font-family: var(--font-family-default);
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--min-font-size);
   line-height: 16px;
   letter-spacing: -0.5%;
   text-align: center;
-  color: #000000;
+  color: var(--color-black);
   border: none;
   text-align: center;
-  background-color: #eef2ff;
+  background-color: var(--color-back-blue);
   padding: 4px 8px;
   border-radius: 20px;
   appearance: none;
@@ -149,7 +172,7 @@ export const Select = styled.select`
 `;
 
 export const EditButton = styled.button`
-  font-size: 12px;
+  font-size: var(--min-font-size);
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 12px;
@@ -159,11 +182,11 @@ export const EditButton = styled.button`
   transition: box-shadow 0.3s;
   font-weight: bold;
   border: none;
-  color: #f59e0b;
-  background: #fffbeb;
+  color: var(--color-yellow);
+  background: var(--color-back-yellow);
   margin-bottom: 12px;
 
   &:hover {
-    box-shadow: 0 0 10px 5px #fffbeb;
+    box-shadow: 0 0 10px 5px var(--color-back-yellow);
   }
 `;

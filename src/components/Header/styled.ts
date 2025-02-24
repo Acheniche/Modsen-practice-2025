@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledHeader = styled.header`
   height: 104px;
   width: 1005px;
-  background: #f8fafc;
+  background: var(--color-grey);
   display: flex;
   text-align: left;
   align-items: center;
@@ -17,7 +17,7 @@ export const StyledHeader = styled.header`
 export const Circle = styled.div`
   width: 40px;
   height: 40px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-circle);
   border-radius: 40px;
   display: flex;
   justify-content: center;
@@ -40,7 +40,7 @@ export const Vertical = styled.div`
   height: 100%;
   border-radius: 5px;
   transform: translateX(-50%);
-  background: #475569;
+  background: var(--color-description);
 `;
 
 export const Horizontal = styled.div`
@@ -51,5 +51,5 @@ export const Horizontal = styled.div`
   border-radius: 5px;
   height: 2.63px;
   transform: translateY(-50%);
-  background: #475569;
+  background: var(--color-description);
 `;

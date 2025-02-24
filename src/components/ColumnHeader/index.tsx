@@ -1,4 +1,13 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import {
+  removeColumn,
+  renameColumn,
+  reorderColumns,
+} from '@/store/reducers/TasksSlice';
 import { ColumnProps } from '@/types/ColumnProps';
+
 import {
   ColumnHeaderWrapper,
   DeleteButton,
@@ -9,13 +18,6 @@ import {
   TasksCounter,
   Vertical,
 } from './styled';
-import { useDispatch } from 'react-redux';
-import {
-  removeColumn,
-  renameColumn,
-  reorderColumns,
-} from '@/store/reducers/TasksSlice';
-import { useState } from 'react';
 
 const ColumnHeader: React.FC<
   Pick<ColumnProps, 'buttonPrimaryColor' | 'tasks' | 'title'>

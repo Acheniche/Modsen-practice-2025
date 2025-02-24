@@ -1,11 +1,13 @@
-import React from 'react';
-import { Column } from './styled';
-import { ColumnProps } from '@/types/ColumnProps';
 import AddTaskButton from '@components/AddTaskButton';
-import TaskCard from '@components/TaskCard';
 import ColumnHeader from '@components/ColumnHeader';
+import TaskCard from '@components/TaskCard';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+
 import { moveTask, reorderTasks } from '@/store/reducers/TasksSlice';
+import { ColumnProps } from '@/types/ColumnProps';
+
+import { Column } from './styled';
 
 const ProgressColumn: React.FC<ColumnProps> = ({
   title,

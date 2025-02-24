@@ -1,5 +1,6 @@
-import Header from '@components/Header';
 import Board from '@components/Board';
+import Header from '@components/Header';
+
 import { Wrapper } from './styled';
 
 function App() {

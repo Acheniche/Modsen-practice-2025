@@ -1,9 +1,11 @@
-import { TaskBoard } from './styled';
-import ProgressColumn from '../ProgressColumn';
+import { RootState } from '@store';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store';
+
 import { setTasks } from '@/store/reducers/TasksSlice';
+
+import ProgressColumn from '../ProgressColumn';
+import { TaskBoard } from './styled';
 
 const KanbanBoard = () => {
   const dispatch = useDispatch();

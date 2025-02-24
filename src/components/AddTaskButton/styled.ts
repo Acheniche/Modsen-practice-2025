@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const TaskButton = styled.button<{ primary: string; secondary: string }>`
-  background: ${(props) => props.secondary || 'rgba(238, 242, 255, 1)'};
+  background: ${(props) => props.secondary || 'var(--color-back-blue)'};
   border: none;
-  color: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
-  font-size: 12px;
+  color: ${(props) => props.primary || 'var(--color-purple)'};
+  font-size: var(--min-font-size);
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 12px;
@@ -15,15 +15,15 @@ export const TaskButton = styled.button<{ primary: string; secondary: string }>`
 
   &:hover {
     box-shadow: 0 0 10px 5px
-      ${(props) => props.secondary || 'rgba(238, 242, 255, 1)'};
+      ${(props) => props.secondary || 'var(--color-back-blue)'};
   }
 `;
 
 export const Container = styled.div`
   background: white;
   border-radius: 24px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(226, 232, 240, 1);
+  box-shadow: 0 2px 5px var(--color-dark-grey);
+  border: 1px solid var(--color-dark-grey);
   border-radius: 24px;
   border-width: 1px;
   padding: 12px;
@@ -36,16 +36,16 @@ export const TaskForm = styled.div`
 `;
 
 export const Select = styled.select`
-  font-family: 'Plus Jakarta Sans';
+  font-family: var(--font-family-default);
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--min-font-size);
   line-height: 16px;
   letter-spacing: -0.5%;
   text-align: center;
-  color: #000000;
+  color: var(--color-black);
   border: none;
   text-align: center;
-  background-color: #eef2ff;
+  background-color: var(--color-back-blue);
   padding: 4px 8px;
   border-radius: 20px;
   appearance: none;
@@ -55,32 +55,32 @@ export const Select = styled.select`
 `;
 
 export const TitleInput = styled.input`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--max-font-size);
   line-height: 22px;
   letter-spacing: -0.7%;
-  color: #1e293b;
+  color: var(--color-title);
   border: none;
 `;
 
 export const DescriptionInput = styled.input`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--max-font-size);
   line-height: 25.6px;
   letter-spacing: 0%;
-  color: #475569;
+  color: var(--color-description);
   border: none;
 `;
 
 export const SaveButton = styled.button`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--mid-font-size);
   line-height: 20px;
   letter-spacing: -0.6%;
-  color: #475569;
+  color: var(--color-description);
   border: none;
   cursor: pointer;
   background-color: #fff;

@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addTask } from '@/store/reducers/TasksSlice';
+import { PriorityType } from '@/types/Priority';
+
 import {
   Container,
   DescriptionInput,
@@ -8,9 +13,6 @@ import {
   TaskForm,
   TitleInput,
 } from './styled';
-import { useDispatch } from 'react-redux';
-import { addTask } from '@/store/reducers/TasksSlice';
-import { PriorityType } from '@/types/Priority';
 
 const AddTaskButton: React.FC<{
   buttonPrimaryColor: string;

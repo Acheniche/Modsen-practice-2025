@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledColumnHeader = styled.h2`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--max-font-size);
   line-height: 22px;
   letter-spacing: -0.7%;
   color: #fff;
@@ -20,7 +20,7 @@ export const ColumnHeaderWrapper = styled.div<{ primary: string }>`
   padding-bottom: 8px;
   padding-left: 8px;
   margin-bottom: 16px;
-  background: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
+  background: ${(props) => props.primary || 'var(--color-purple)'};
 `;
 
 export const TasksCounter = styled.div<{ primary: string }>`
@@ -32,14 +32,14 @@ export const TasksCounter = styled.div<{ primary: string }>`
   padding-right: 12px;
   padding-bottom: 6px;
   padding-left: 12px;
-  background-color: #ffffff;
-  font-family: Plus Jakarta Sans;
+  background-color: var(--color-white);
+  font-family: var(--font-family-default);
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--mid-font-size);
   line-height: 20px;
   letter-spacing: -0.6%;
   text-align: center;
-  color: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
+  color: ${(props) => props.primary || 'var(--color-purple)'};
 `;
 
 export const Plus = styled.div`
@@ -58,7 +58,7 @@ export const Vertical = styled.div`
   height: 18.75px;
   border-radius: 5px;
   transform: translateX(-50%);
-  background: #ffffff;
+  background: var(--color-white);
 `;
 
 export const Horizontal = styled.div`
@@ -69,24 +69,24 @@ export const Horizontal = styled.div`
   border-radius: 5px;
   height: 2.63px;
   transform: translateY(-50%);
-  background: #ffffff;
+  background: var(--color-white);
 `;
 
 export const EditInput = styled.input<{ primary: string }>`
-  font-family: Plus Jakarta Sans;
+  font-family: var(--font-family-default);
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--max-font-size);
   line-height: 22px;
   letter-spacing: -0.7%;
   border: none;
   outline: none;
-  color: #fff;
+  color: var(--color-white);
   width: 40%;
-  background-color: ${(props) => props.primary || 'rgba(79, 70, 229, 1)'};
+  background-color: ${(props) => props.primary || 'var(--color-purple)'};
 `;
 
 export const DeleteButton = styled.button`
-  font-size: 12px;
+  font-size: var(--min-font-size);
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 12px;
@@ -96,11 +96,11 @@ export const DeleteButton = styled.button`
   transition: box-shadow 0.3s;
   font-weight: bold;
   border: none;
-  color: #f43f5e;
-  background: #fff1f2;
+  color: var(--color-red);
+  background: var(--color-back-red);
   margin-left: auto;
 
   &:hover {
-    box-shadow: 0 0 10px 5px #fff1f2;
+    box-shadow: 0 0 10px 5px var(--color-back-red);
   }
 `;

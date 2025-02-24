@@ -1,6 +1,8 @@
-import { Circle, Horizontal, Plus, StyledHeader, Vertical } from './styled';
 import { useDispatch } from 'react-redux';
+
 import { addColumn } from '@/store/reducers/TasksSlice';
+
+import { Circle, Horizontal, Plus, StyledHeader, Vertical } from './styled';
 
 const Header = () => {
   const dispatch = useDispatch();
