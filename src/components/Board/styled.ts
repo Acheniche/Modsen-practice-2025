@@ -14,5 +14,6 @@ export const TaskBoard = styled.div`
     overflow-x: auto;
     padding-bottom: 10px;
     scrollbar-width: none;
+    margin: 0 auto;
   }
 `;

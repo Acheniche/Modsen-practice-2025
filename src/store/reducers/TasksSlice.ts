@@ -2,8 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Task } from '@/types/Task';
 
+type ColumnConfig = {
+  tasks: Task[];
+  colors: {
+    primary: string;
+    secondary: string;
+  };
+};
+
 type ColumnsState = {
-  [key: string]: Task[];
+  [key: string]: ColumnConfig;
 };
 
 type TasksState = {
@@ -12,9 +20,27 @@ type TasksState = {
 
 export const initialState: TasksState = {
   columns: {
-    'To Do': [],
-    'In Progress': [],
-    Done: [],
+    'To Do': {
+      tasks: [],
+      colors: {
+        primary: 'var(--color-purple)',
+        secondary: 'var(--color-back-blue)',
+      },
+    },
+    'In Progress': {
+      tasks: [],
+      colors: {
+        primary: 'var(--color-yellow)',
+        secondary: 'var(--color-back-yellow)',
+      },
+    },
+    Done: {
+      tasks: [],
+      colors: {
+        primary: 'var(--color-green)',
+        secondary: 'var(--color-back-green)',
+      },
+    },
   },
 };
 
@@ -30,11 +56,11 @@ const tasksSlice = createSlice({
         ...action.payload.task,
         column: action.payload.column,
       };
-      state.columns[action.payload.column].push(taskWithColumn);
+      state.columns[action.payload.column].tasks.push(taskWithColumn);
       localStorage.setItem('tasks', JSON.stringify(state.columns));
     },
 
-    setTasks: (state, action: PayloadAction<Record<string, Task[]>>) => {
+    setTasks: (state, action: PayloadAction<Record<string, ColumnConfig>>) => {
       if (Object.keys(action.payload).length > 0) {
         state.columns = { ...action.payload };
       } else {
@@ -51,7 +77,13 @@ const tasksSlice = createSlice({
         counter++;
       }
 
-      state.columns[newColumnName] = [];
+      state.columns[newColumnName] = {
+        tasks: [],
+        colors: {
+          primary: 'var(--color-purple)',
+          secondary: 'var(--color-back-blue)',
+        },
+      };
       localStorage.setItem('tasks', JSON.stringify(state.columns));
     },
 
@@ -68,8 +100,21 @@ const tasksSlice = createSlice({
             ? [action.payload.newName, value]
             : [key, value],
         );
-
         state.columns = Object.fromEntries(entries);
+        localStorage.setItem('tasks', JSON.stringify(state.columns));
+      }
+    },
+
+    updateColumnColors: (
+      state,
+      action: PayloadAction<{
+        column: string;
+        colors: { primary: string; secondary: string };
+      }>,
+    ) => {
+      const { column, colors } = action.payload;
+      if (state.columns[column]) {
+        state.columns[column].colors = colors;
         localStorage.setItem('tasks', JSON.stringify(state.columns));
       }
     },
@@ -83,10 +128,10 @@ const tasksSlice = createSlice({
       }>,
     ) => {
       const { column, sourceIndex, destinationIndex } = action.payload;
-      const tasks = [...state.columns[column]];
+      const tasks = [...state.columns[column].tasks];
       const [reorderedTask] = tasks.splice(sourceIndex, 1);
       tasks.splice(destinationIndex, 0, reorderedTask);
-      state.columns[column] = tasks;
+      state.columns[column].tasks = tasks;
       localStorage.setItem('tasks', JSON.stringify(state.columns));
     },
 
@@ -102,18 +147,21 @@ const tasksSlice = createSlice({
       const { taskId, fromColumn, toColumn, toIndex } = action.payload;
 
       if (state.columns[fromColumn] && state.columns[toColumn]) {
-        const taskIndex = state.columns[fromColumn].findIndex(
+        const taskIndex = state.columns[fromColumn].tasks.findIndex(
           (task) => task.id === taskId,
         );
 
         if (taskIndex !== -1) {
-          const [movedTask] = state.columns[fromColumn].splice(taskIndex, 1);
+          const [movedTask] = state.columns[fromColumn].tasks.splice(
+            taskIndex,
+            1,
+          );
           const updatedTask = { ...movedTask, column: toColumn };
 
           if (toIndex !== undefined) {
-            state.columns[toColumn].splice(toIndex, 0, updatedTask);
+            state.columns[toColumn].tasks.splice(toIndex, 0, updatedTask);
           } else {
-            state.columns[toColumn].push(updatedTask);
+            state.columns[toColumn].tasks.push(updatedTask);
           }
           localStorage.setItem('tasks', JSON.stringify(state.columns));
         }
@@ -125,7 +173,7 @@ const tasksSlice = createSlice({
       action: PayloadAction<{ taskId: number; column: string }>,
     ) => {
       const { taskId, column } = action.payload;
-      state.columns[column] = state.columns[column].filter(
+      state.columns[column].tasks = state.columns[column].tasks.filter(
         (task) => task.id !== taskId,
       );
       localStorage.setItem('tasks', JSON.stringify(state.columns));
@@ -148,13 +196,13 @@ const tasksSlice = createSlice({
       }>,
     ) => {
       const { taskId, column, updatedTask } = action.payload;
-      const taskIndex = state.columns[column].findIndex(
+      const taskIndex = state.columns[column].tasks.findIndex(
         (task) => task.id === taskId,
       );
 
       if (taskIndex !== -1) {
-        state.columns[column][taskIndex] = {
-          ...state.columns[column][taskIndex],
+        state.columns[column].tasks[taskIndex] = {
+          ...state.columns[column].tasks[taskIndex],
           ...updatedTask,
         };
         localStorage.setItem('tasks', JSON.stringify(state.columns));
@@ -191,11 +239,12 @@ export const {
   setTasks,
   addColumn,
   renameColumn,
+  reorderTasks,
   moveTask,
   removeTask,
   removeColumn,
   updateTask,
-  reorderTasks,
   reorderColumns,
+  updateColumnColors,
 } = tasksSlice.actions;
 export default tasksSlice;

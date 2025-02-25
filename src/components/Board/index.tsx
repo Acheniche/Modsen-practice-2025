@@ -21,14 +21,14 @@ const KanbanBoard = () => {
   return (
     <TaskBoard>
       <div>
-        {Object.keys(columns).map((column) => (
+        {Object.entries(columns).map(([columnName, config]) => (
           <ProgressColumn
-            key={column}
-            title={column}
-            tasks={columns[column]}
-            color="#4F46E5"
-            buttonPrimaryColor="#4F46E5"
-            buttonSecondaryColor="#EEF2FF"
+            key={columnName}
+            title={columnName}
+            tasks={config.tasks}
+            color={config.colors.primary}
+            buttonPrimaryColor={config.colors.primary}
+            buttonSecondaryColor={config.colors.secondary}
           />
         ))}
       </div>
