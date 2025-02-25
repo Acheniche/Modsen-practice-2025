@@ -8,7 +8,10 @@ import { TaskCardProps } from '@/types/TaskCardProps';
 import {
   DeleteButton,
   DescriptionInput,
+  DotsIcon,
   EditButton,
+  MenuButton,
+  MenuContainer,
   SaveButton,
   Select,
   StyledButtonWrapper,
@@ -27,6 +30,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   const [priority, setPriority] = useState<PriorityType>(
     task.priority || undefined,
   );
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleDelete = () => {
     dispatch(removeTask({ taskId: task.id, column: task.column }));
@@ -34,6 +38,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
 
   const handleEdit = () => {
     setIsEditing(true);
+    setIsMenuOpen(false);
   };
 
   const handleSave = () => {
@@ -88,8 +93,20 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
                 {task.priority}
               </StyledPriorityLabel>
             )}
-            <EditButton onClick={handleEdit}>Edit</EditButton>
-            <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+
+            {isMenuOpen && (
+              <MenuContainer>
+                <EditButton onClick={handleEdit}>Edit</EditButton>
+                <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+              </MenuContainer>
+            )}
+            <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <DotsIcon>
+                <span></span>
+                <span></span>
+                <span></span>
+              </DotsIcon>
+            </MenuButton>
           </StyledButtonWrapper>
           <StyledH3>{task.title}</StyledH3>
           <StyledP>{task.description}</StyledP>

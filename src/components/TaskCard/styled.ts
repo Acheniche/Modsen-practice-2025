@@ -104,7 +104,6 @@ export const DeleteButton = styled.button`
   border: none;
   color: var(--color-red);
   background: var(--color-back-red);
-  margin-bottom: 12px;
 
   &:hover {
     box-shadow: 0 0 10px 5px var(--color-back-red);
@@ -114,6 +113,7 @@ export const DeleteButton = styled.button`
 export const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  position: relative;
 `;
 
 export const TitleInput = styled.input`
@@ -184,9 +184,54 @@ export const EditButton = styled.button`
   border: none;
   color: var(--color-yellow);
   background: var(--color-back-yellow);
-  margin-bottom: 12px;
 
   &:hover {
     box-shadow: 0 0 10px 5px var(--color-back-yellow);
+  }
+`;
+
+export const MenuContainer = styled.div`
+  background: var(--color-white);
+  box-shadow: 0 0 10px var(--color-grey);
+  border-radius: 8px;
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  right: 30px;
+`;
+
+export const MenuButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  margin-left: auto;
+`;
+
+export const DotsIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 16px;
+  width: 4px;
+
+  span {
+    display: block;
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-dark-grey);
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+
+  ${MenuButton}:hover & span {
+    background-color: var(--color-black);
   }
 `;
