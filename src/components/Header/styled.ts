@@ -8,10 +8,7 @@ export const StyledHeader = styled.header`
   text-align: left;
   align-items: center;
   padding: 0 30px;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  margin: 0 auto;
 `;
 
 export const Circle = styled.div`
