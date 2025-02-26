@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
-import { addTask } from '@/store/reducers/TasksSlice';
-import { PriorityType } from '@/types/Priority';
+import { PRIORITY_OPTIONS } from '@/constants/priorities';
+import { useAddTask } from '@/hooks/useAddTask';
+import { AddTaskButtonProps } from '@/types/AddTaskButtonProps';
 
 import {
   Container,
@@ -14,60 +14,44 @@ import {
   TitleInput,
 } from './styled';
 
-const AddTaskButton: React.FC<{
-  buttonPrimaryColor: string;
-  buttonSecondaryColor: string;
-  column: string;
-  children: React.ReactNode;
-}> = ({ buttonPrimaryColor, buttonSecondaryColor, column, children }) => {
-  const dispatch = useDispatch();
-  const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState<PriorityType>(undefined);
-
-  const handleSave = () => {
-    if (title.trim()) {
-      dispatch(
-        addTask({
-          column,
-          task: { id: Date.now(), title, description, priority },
-        }),
-      );
-      setTitle('');
-      setDescription('');
-      setPriority(undefined);
-      setIsEditing(false);
-    } else {
-      setTitle('');
-      setDescription('');
-      setPriority(undefined);
-      setIsEditing(false);
-    }
-  };
+const AddTaskButton: React.FC<AddTaskButtonProps> = ({
+  buttonPrimaryColor,
+  buttonSecondaryColor,
+  column,
+  children,
+}) => {
+  const {
+    isEditing,
+    title,
+    description,
+    priority,
+    handleSave,
+    handlePriorityChange,
+    handleTitleChange,
+    handleDescriptionChange,
+    startEditing,
+  } = useAddTask({ column });
 
   return (
     <Container>
       {isEditing ? (
         <TaskForm>
-          <Select
-            value={priority ?? ''}
-            onChange={(e) => setPriority(e.target.value as PriorityType)}
-          >
-            <option value="">Priority</option>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
+          <Select value={priority ?? ''} onChange={handlePriorityChange}>
+            {PRIORITY_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </Select>
           <TitleInput
             placeholder="Task title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={handleTitleChange}
           />
           <DescriptionInput
             placeholder="Add description"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={handleDescriptionChange}
           />
           <SaveButton onClick={handleSave}>Save</SaveButton>
         </TaskForm>
@@ -75,7 +59,7 @@ const AddTaskButton: React.FC<{
         <TaskButton
           primary={buttonPrimaryColor}
           secondary={buttonSecondaryColor}
-          onClick={() => setIsEditing(true)}
+          onClick={startEditing}
         >
           {children}
         </TaskButton>

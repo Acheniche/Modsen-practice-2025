@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
-import { removeTask, updateTask } from '@/store/reducers/TasksSlice';
-import { PriorityType } from '@/types/Priority';
+import { PRIORITY_OPTIONS } from '@/constants/priorities';
+import { useTaskCard } from '@/hooks/useTaskCard';
 import { TaskCardProps } from '@/types/TaskCardProps';
 
 import {
@@ -23,39 +22,21 @@ import {
 } from './styled';
 
 const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
-  const dispatch = useDispatch();
-  const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(task.title);
-  const [description, setDescription] = useState(task.description);
-  const [priority, setPriority] = useState<PriorityType>(
-    task.priority || undefined,
-  );
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleDelete = () => {
-    dispatch(removeTask({ taskId: task.id, column: task.column }));
-  };
-
-  const handleEdit = () => {
-    setIsEditing(true);
-    setIsMenuOpen(false);
-  };
-
-  const handleSave = () => {
-    dispatch(
-      updateTask({
-        taskId: task.id,
-        column: task.column,
-        updatedTask: { title, description, priority },
-      }),
-    );
-    setIsEditing(false);
-  };
-
-  const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
-    event.dataTransfer.setData('taskId', task.id.toString());
-    event.dataTransfer.setData('taskColumn', task.column);
-  };
+  const {
+    isEditing,
+    title,
+    description,
+    priority,
+    isMenuOpen,
+    handleDelete,
+    handleEdit,
+    handleSave,
+    handleDragStart,
+    handlePriorityChange,
+    handleTitleChange,
+    handleDescriptionChange,
+    toggleMenu,
+  } = useTaskCard(task);
 
   return (
     <StyledTaskCard
@@ -65,23 +46,18 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     >
       {isEditing ? (
         <>
-          <Select
-            value={priority}
-            onChange={(e) => setPriority(e.target.value as PriorityType)}
-          >
-            <option value="">Priority</option>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
+          <Select value={priority ?? ''} onChange={handlePriorityChange}>
+            {PRIORITY_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </Select>
-          <TitleInput
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <TitleInput value={title} onChange={handleTitleChange} />
           <DescriptionInput
             placeholder="Add description"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={handleDescriptionChange}
           />
           <SaveButton onClick={handleSave}>Save</SaveButton>
         </>
@@ -93,14 +69,13 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
                 {task.priority}
               </StyledPriorityLabel>
             )}
-
             {isMenuOpen && (
               <MenuContainer>
                 <EditButton onClick={handleEdit}>Edit</EditButton>
                 <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
               </MenuContainer>
             )}
-            <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <MenuButton onClick={toggleMenu}>
               <DotsIcon>
                 <span></span>
                 <span></span>

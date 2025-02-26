@@ -2,9 +2,8 @@ import AddTaskButton from '@components/AddTaskButton';
 import ColumnHeader from '@components/ColumnHeader';
 import TaskCard from '@components/TaskCard';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
-import { moveTask, reorderTasks } from '@/store/reducers/TasksSlice';
+import { useDragAndDrop } from '@/hooks/useDragAndDrop';
 import { ColumnProps } from '@/types/ColumnProps';
 
 import { Column } from './styled';
@@ -16,49 +15,7 @@ const ProgressColumn: React.FC<ColumnProps> = ({
   buttonPrimaryColor,
   buttonSecondaryColor,
 }) => {
-  const dispatch = useDispatch();
-
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const taskId = parseInt(event.dataTransfer.getData('taskId'), 10);
-    const sourceColumn = event.dataTransfer.getData('taskColumn');
-    const targetTaskId = event.currentTarget.dataset.taskId;
-
-    const targetIndex = targetTaskId
-      ? tasks.findIndex((task) => task.id === parseInt(targetTaskId))
-      : tasks.length;
-
-    if (sourceColumn === title) {
-      const sourceIndex = tasks.findIndex((task) => task.id === taskId);
-      if (
-        sourceIndex !== -1 &&
-        targetIndex !== -1 &&
-        sourceIndex !== targetIndex
-      ) {
-        dispatch(
-          reorderTasks({
-            column: title,
-            sourceIndex,
-            destinationIndex: targetIndex,
-          }),
-        );
-      }
-    } else if (sourceColumn !== title) {
-      dispatch(
-        moveTask({
-          taskId,
-          fromColumn: sourceColumn,
-          toColumn: title,
-          toIndex: targetIndex,
-        }),
-      );
-    }
-  };
-
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-  };
+  const { handleDrop, handleDragOver } = useDragAndDrop({ title, tasks });
 
   return (
     <Column color={color} onDragOver={handleDragOver} onDrop={handleDrop}>

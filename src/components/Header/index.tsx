@@ -1,15 +1,9 @@
-import { useDispatch } from 'react-redux';
-
-import { addColumn } from '@/store/reducers/TasksSlice';
+import { useHeader } from '@/hooks/useHeader';
 
 import { Circle, Horizontal, Plus, StyledHeader, Vertical } from './styled';
 
 const Header = () => {
-  const dispatch = useDispatch();
-
-  const handleAddColumn = () => {
-    dispatch(addColumn());
-  };
+  const { handleAddColumn } = useHeader();
 
   return (
     <StyledHeader>
