@@ -1,7 +1,7 @@
 import Board from '@components/Board';
 import Header from '@components/Header';
 
-function App() {
+function KanbanBoard() {
   return (
     <>
       <Header />
@@ -10,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default KanbanBoard;
