@@ -3,19 +3,19 @@ import styled from 'styled-components';
 export const StyledTaskCard = styled.div<{
   priority?: 'High' | 'Medium' | 'Low';
 }>`
-  background: var(--color-white);
+  background: ${({ theme }) => theme.colors.white};
   padding: 12px;
   border-radius: 24px;
   margin-bottom: 12px;
   border: 1px solid
     ${(props) =>
       props.priority === 'High'
-        ? 'var(--color-red)'
+        ? ({ theme }) => theme.colors.red
         : props.priority === 'Medium'
-          ? 'var(--color-purple)'
+          ? ({ theme }) => theme.colors.purple
           : props.priority === 'Low'
-            ? 'var(--color-green)'
-            : 'var(--color-dark-grey)'};
+            ? ({ theme }) => theme.colors.green
+            : ({ theme }) => theme.colors.dark_grey};
 
   text-align: left;
   display: flex;
@@ -26,20 +26,20 @@ export const StyledTaskCard = styled.div<{
     box-shadow: 0 0 10px 5px
       ${(props) =>
         props.priority === 'High'
-          ? 'var(--color-back-red)'
+          ? ({ theme }) => theme.colors.back_red
           : props.priority === 'Medium'
-            ? 'var(--color-back-blue)'
+            ? ({ theme }) => theme.colors.back_blue
             : props.priority === 'Low'
-              ? 'var(--color-back-green)'
-              : 'var(--color-dark-grey)'};
+              ? ({ theme }) => theme.colors.back_green
+              : ({ theme }) => theme.colors.dark_grey};
   }
 `;
 
 export const StyledPriorityLabel = styled.button<{
   priority?: 'High' | 'Medium' | 'Low';
 }>`
-  font-size: var(--min-font-size);
-  cursor: pointer;
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
+  cursor: ${({ theme }) => theme.cursor};
   padding: 4px 8px;
   border-radius: 12px;
   display: flex;
@@ -47,53 +47,53 @@ export const StyledPriorityLabel = styled.button<{
   gap: 4px;
   transition: box-shadow 0.3s;
   font-weight: bold;
-  border: none;
+  border: ${({ theme }) => theme.border};
   margin-bottom: 12px;
   color: ${(props) =>
     props.priority === 'High'
-      ? 'var(--color-red)'
+      ? ({ theme }) => theme.colors.red
       : props.priority === 'Medium'
-        ? 'var(--color-purple)'
-        : 'var(--color-green)'};
+        ? ({ theme }) => theme.colors.purple
+        : ({ theme }) => theme.colors.green};
   background: ${(props) =>
     props.priority === 'High'
-      ? 'var(--color-back-red)'
+      ? ({ theme }) => theme.colors.back_red
       : props.priority === 'Medium'
-        ? 'var(--color-back-blue)'
-        : 'var(--color-back-green)'};
+        ? ({ theme }) => theme.colors.back_blue
+        : ({ theme }) => theme.colors.back_green};
 
   &:hover {
     box-shadow: 0 0 10px 5px
       ${(props) =>
         props.priority === 'High'
-          ? 'var(--color-back-red)'
+          ? ({ theme }) => theme.colors.back_red
           : props.priority === 'Medium'
-            ? 'var(--color-back-blue)'
-            : 'var(--color-back-green)'};
+            ? ({ theme }) => theme.colors.back_blue
+            : ({ theme }) => theme.colors.back_green};
   }
 `;
 
 export const StyledH3 = styled.h3`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 700;
-  font-size: var(--max-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 22px;
   letter-spacing: -0.7%;
-  color: var(--color-title);
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const StyledP = styled.p`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 400;
-  font-size: var(--max-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 25.6px;
   letter-spacing: 0%;
-  color: var(--color-description);
+  color: ${({ theme }) => theme.colors.description};
 `;
 
 export const DeleteButton = styled.button`
-  font-size: var(--min-font-size);
-  cursor: pointer;
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
+  cursor: ${({ theme }) => theme.cursor};
   padding: 4px 8px;
   border-radius: 12px;
   display: flex;
@@ -101,12 +101,12 @@ export const DeleteButton = styled.button`
   gap: 4px;
   transition: box-shadow 0.3s;
   font-weight: bold;
-  border: none;
-  color: var(--color-red);
-  background: var(--color-back-red);
+  border: ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.colors.red};
+  background: ${({ theme }) => theme.colors.back_red};
 
   &:hover {
-    box-shadow: 0 0 10px 5px var(--color-back-red);
+    box-shadow: 0 0 10px 5px ${({ theme }) => theme.colors.back_red};
   }
 `;
 
@@ -117,63 +117,63 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const TitleInput = styled.input`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 700;
-  font-size: var(--max-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 22px;
   letter-spacing: -0.7%;
-  color: var(--color-title);
-  border: none;
+  color: ${({ theme }) => theme.colors.title};
+  border: ${({ theme }) => theme.border};
 `;
 
 export const DescriptionInput = styled.input`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 400;
-  font-size: var(--max-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 25.6px;
   letter-spacing: 0%;
-  color: var(--color-description);
-  border: none;
+  color: ${({ theme }) => theme.colors.description};
+  border: ${({ theme }) => theme.border};
 `;
 
 export const SaveButton = styled.button`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 500;
-  font-size: var(--mid-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
   line-height: 20px;
   letter-spacing: -0.6%;
-  color: var(--color-description);
-  border: none;
-  cursor: pointer;
-  background-color: var(--color-white);
+  color: ${({ theme }) => theme.colors.description};
+  border: ${({ theme }) => theme.border};
+  cursor: ${({ theme }) => theme.cursor};
+  background-color: ${({ theme }) => theme.colors.white};
   text-align: left;
   padding: 2px;
   width: 30px;
 `;
 
 export const Select = styled.select`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 600;
-  font-size: var(--min-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
   line-height: 16px;
   letter-spacing: -0.5%;
   text-align: center;
-  color: var(--color-black);
-  border: none;
+  color: ${({ theme }) => theme.colors.black};
+  border: ${({ theme }) => theme.border};
   text-align: center;
-  background-color: var(--color-back-blue);
+  background-color: ${({ theme }) => theme.colors.back_blue};
   padding: 4px 8px;
   border-radius: 20px;
   appearance: none;
-  cursor: pointer;
+  cursor: ${({ theme }) => theme.cursor};
   width: fit-content;
   outline: none;
   margin-bottom: 12px;
 `;
 
 export const EditButton = styled.button`
-  font-size: var(--min-font-size);
-  cursor: pointer;
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
+  cursor: ${({ theme }) => theme.cursor};
   padding: 4px 8px;
   border-radius: 12px;
   display: flex;
@@ -181,18 +181,18 @@ export const EditButton = styled.button`
   gap: 4px;
   transition: box-shadow 0.3s;
   font-weight: bold;
-  border: none;
-  color: var(--color-yellow);
-  background: var(--color-back-yellow);
+  border: ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.colors.yellow};
+  background: ${({ theme }) => theme.colors.back_yellow};
 
   &:hover {
-    box-shadow: 0 0 10px 5px var(--color-back-yellow);
+    box-shadow: 0 0 10px 5px ${({ theme }) => theme.colors.back_yellow};
   }
 `;
 
 export const MenuContainer = styled.div`
-  background: var(--color-white);
-  box-shadow: 0 0 10px var(--color-grey);
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 0 10px ${({ theme }) => theme.colors.grey};
   border-radius: 8px;
   gap: 8px;
   display: flex;
@@ -202,8 +202,8 @@ export const MenuContainer = styled.div`
 
 export const MenuButton = styled.button`
   background: transparent;
-  border: none;
-  cursor: pointer;
+  border: ${({ theme }) => theme.border};
+  cursor: ${({ theme }) => theme.cursor};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -226,12 +226,12 @@ export const DotsIcon = styled.div`
     display: block;
     width: 4px;
     height: 4px;
-    background-color: var(--color-dark-grey);
+    background-color: ${({ theme }) => theme.colors.dark_grey};
     border-radius: 50%;
     transition: background-color 0.2s;
   }
 
   ${MenuButton}:hover & span {
-    background-color: var(--color-black);
+    background-color: ${({ theme }) => theme.colors.black};
   }
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledHeader = styled.header`
   height: 104px;
   width: 1005px;
-  background: var(--color-grey);
+  background: ${({ theme }) => theme.colors.grey};
   display: flex;
   text-align: left;
   align-items: center;
@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
 export const Circle = styled.div`
   width: 40px;
   height: 40px;
-  border: 1px solid var(--color-circle);
+  border: 1px solid ${({ theme }) => theme.colors.circle};
   border-radius: 40px;
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@ export const Plus = styled.div`
   position: relative;
   width: 18.75px;
   height: 18.75px;
-  cursor: pointer;
+  cursor: ${({ theme }) => theme.cursor};
 `;
 
 export const Vertical = styled.div`
@@ -37,7 +37,7 @@ export const Vertical = styled.div`
   height: 100%;
   border-radius: 5px;
   transform: translateX(-50%);
-  background: var(--color-description);
+  background: ${({ theme }) => theme.colors.description};
 `;
 
 export const Horizontal = styled.div`
@@ -48,5 +48,5 @@ export const Horizontal = styled.div`
   border-radius: 5px;
   height: 2.63px;
   transform: translateY(-50%);
-  background: var(--color-description);
+  background: ${({ theme }) => theme.colors.description};
 `;

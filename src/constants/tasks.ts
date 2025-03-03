@@ -1,3 +1,4 @@
+import { theme } from '@/styles';
 import { TasksState } from '@/types/tasks';
 
 export const INITIAL_TASKS_STATE: TasksState = {
@@ -5,22 +6,22 @@ export const INITIAL_TASKS_STATE: TasksState = {
     'To Do': {
       tasks: [],
       colors: {
-        primary: 'var(--color-purple)',
-        secondary: 'var(--color-back-blue)',
+        primary: theme.colors.purple,
+        secondary: theme.colors.back_blue,
       },
     },
     'In Progress': {
       tasks: [],
       colors: {
-        primary: 'var(--color-yellow)',
-        secondary: 'var(--color-back-yellow)',
+        primary: theme.colors.yellow,
+        secondary: theme.colors.back_yellow,
       },
     },
     Done: {
       tasks: [],
       colors: {
-        primary: 'var(--color-green)',
-        secondary: 'var(--color-back-green)',
+        primary: theme.colors.green,
+        secondary: theme.colors.back_green,
       },
     },
   },
@@ -29,8 +30,8 @@ export const INITIAL_TASKS_STATE: TasksState = {
 export const DEFAULT_COLUMN_CONFIG = {
   tasks: [],
   colors: {
-    primary: 'var(--color-purple)',
-    secondary: 'var(--color-back-blue)',
+    primary: theme.colors.purple,
+    secondary: theme.colors.back_blue,
   },
 };
 

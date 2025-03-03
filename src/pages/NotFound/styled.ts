@@ -11,25 +11,25 @@ export const NotFoundContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: var(--color-red);
+  color: ${({ theme }) => theme.colors.red};
 `;
 
 export const Message = styled.p`
-  color: var(--color-title);
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const Button = styled.button`
   padding: 12px 24px;
   font-weight: 600;
-  border: none;
+  border: ${({ theme }) => theme.border};
   border-radius: 6px;
-  background-color: var(--color-title);
-  color: var(--color-white);
-  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.title};
+  color: ${({ theme }) => theme.colors.white};
+  cursor: ${({ theme }) => theme.cursor};
   transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: 0 0 10px 5px var(--color-grey);
+    box-shadow: 0 0 10px 5px ${({ theme }) => theme.colors.grey};
     transform: translateY(-2px);
   }
 `;

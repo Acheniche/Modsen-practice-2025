@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledColumnHeader = styled.h2`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 700;
-  font-size: var(--max-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 22px;
   letter-spacing: -0.7%;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const ColumnHeaderWrapper = styled.div<{ primary: string }>`
@@ -15,12 +15,10 @@ export const ColumnHeaderWrapper = styled.div<{ primary: string }>`
   align-items: center;
   gap: 12px;
   border-radius: 24px;
-  padding-top: 8px;
-  padding-right: 12px;
-  padding-bottom: 8px;
-  padding-left: 8px;
+  padding: 8px 12px 8px 8px;
   margin-bottom: 16px;
-  background: ${(props) => props.primary || 'var(--color-purple)'};
+  background: ${(props) =>
+    props.primary || (({ theme }) => theme.colors.purple)};
 `;
 
 export const TasksCounter = styled.div<{ primary: string }>`
@@ -32,14 +30,14 @@ export const TasksCounter = styled.div<{ primary: string }>`
   padding-right: 12px;
   padding-bottom: 6px;
   padding-left: 12px;
-  background-color: var(--color-white);
-  font-family: var(--font-family-default);
+  background-color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 600;
-  font-size: var(--mid-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
   line-height: 20px;
   letter-spacing: -0.6%;
   text-align: center;
-  color: ${(props) => props.primary || 'var(--color-purple)'};
+  color: ${(props) => props.primary || (({ theme }) => theme.colors.purple)};
 `;
 
 export const Plus = styled.div`
@@ -47,7 +45,7 @@ export const Plus = styled.div`
   width: 18.75px;
   height: 18.75px;
   margin-left: auto;
-  cursor: pointer;
+  cursor: ${({ theme }) => theme.cursor};
 `;
 
 export const Vertical = styled.div`
@@ -58,7 +56,7 @@ export const Vertical = styled.div`
   height: 18.75px;
   border-radius: 5px;
   transform: translateX(-50%);
-  background: var(--color-white);
+  background: ${({ theme }) => theme.colors.white};
 `;
 
 export const Horizontal = styled.div`
@@ -69,25 +67,26 @@ export const Horizontal = styled.div`
   border-radius: 5px;
   height: 2.63px;
   transform: translateY(-50%);
-  background: var(--color-white);
+  background: ${({ theme }) => theme.colors.white};
 `;
 
 export const EditInput = styled.input<{ primary: string }>`
-  font-family: var(--font-family-default);
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 700;
-  font-size: var(--max-font-size);
+  font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 22px;
   letter-spacing: -0.7%;
-  border: none;
+  border: ${({ theme }) => theme.border};
   outline: none;
-  color: var(--color-white);
+  color: ${({ theme }) => theme.colors.white};
   width: 40%;
-  background-color: ${(props) => props.primary || 'var(--color-purple)'};
+  background-color: ${(props) =>
+    props.primary || (({ theme }) => theme.colors.purple)};
 `;
 
 export const DeleteButton = styled.button`
-  font-size: var(--min-font-size);
-  cursor: pointer;
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
+  cursor: ${({ theme }) => theme.cursor};
   padding: 4px 8px;
   border-radius: 12px;
   display: flex;
@@ -95,12 +94,12 @@ export const DeleteButton = styled.button`
   gap: 4px;
   transition: box-shadow 0.3s;
   font-weight: bold;
-  border: none;
-  color: var(--color-red);
-  background: var(--color-back-red);
+  border: ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.colors.red};
+  background: ${({ theme }) => theme.colors.back_red};
   margin-left: auto;
 
   &:hover {
-    box-shadow: 0 0 10px 5px var(--color-back-red);
+    box-shadow: 0 0 10px 5px ${({ theme }) => theme.colors.back_red};
   }
 `;

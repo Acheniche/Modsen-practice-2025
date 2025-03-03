@@ -77,27 +77,3 @@ select {
     scroll-behavior: auto !important;
   }
 }
-
-:root {
-  --color-purple: #4f46e5;
-  --color-red: #f43f5e;
-  --color-yellow: #f59e0b;
-  --color-grey: #f8fafc;
-  --color-green: #22c55e;
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-dark-grey: #e2e8f0;
-  --color-back-blue: #eef2ff;
-  --color-back-yellow: #fffbeb;
-  --color-back-red: #fff1f2;
-  --color-back-green: #f0fdf4;
-  --color-circle: #cbd5e1;
-  --color-title: #1e293b;
-  --color-description: #475569;
-
-  --max-font-size: 16px;
-  --mid-font-size: 14px;
-  --min-font-size: 12px;
-
-  --font-family-default: 'Plus Jakarta Sans';
-}
