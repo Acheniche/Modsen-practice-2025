@@ -1,6 +1,7 @@
 import { useKanbanBoard } from '@/hooks/useKanbanBoard';
 
 import ProgressColumn from '../ProgressColumn';
+
 import { TaskBoard } from './styled';
 
 const KanbanBoard = () => {

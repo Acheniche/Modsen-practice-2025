@@ -1,5 +1,3 @@
-import './index.css';
-
 import ErrorBoundary from '@components/ErrorBoundary/index.tsx';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -10,6 +8,8 @@ import KanbanBoard from '@/pages/KanbanBoard';
 import NotFound from '@/pages/NotFound';
 
 import store from './store';
+
+import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

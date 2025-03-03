@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { PRIORITY_OPTIONS } from '@/constants/priorities';
 import { useTaskCard } from '@/hooks/useTaskCard';
 import { TaskCardProps } from '@/types/TaskCardProps';

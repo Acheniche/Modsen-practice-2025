@@ -1,7 +1,6 @@
 import AddTaskButton from '@components/AddTaskButton';
 import ColumnHeader from '@components/ColumnHeader';
 import TaskCard from '@components/TaskCard';
-import React from 'react';
 
 import { useDragAndDrop } from '@/hooks/useDragAndDrop';
 import { ColumnProps } from '@/types/ColumnProps';

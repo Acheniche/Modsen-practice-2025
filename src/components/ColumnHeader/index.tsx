@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useColumnHeader } from '@/hooks/useColumnHeader';
 import { ColumnHeaderComponentProps } from '@/types/ColumnHeaderComponentProps';
 

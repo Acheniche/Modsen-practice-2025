@@ -24,14 +24,14 @@ export default [
       'react-refresh': reactRefresh,
       '@typescript-eslint': tseslint.plugin,
       'prettier': prettier,
-      'simple-import-sort': simpleImportSort
+      'simple-import-sort': simpleImportSort,
     },
     settings: {
       'import/resolver': {
         typescript: {
-          'project': './tsconfig.json',
+          project: './tsconfig.json',
         },
-      }
+      },
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -42,8 +42,19 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'import/extensions': 'off',
       'prettier/prettier': 'error',
-      'simple-import-sort/imports': 'error',
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^@?\\w'],
+            ['^@\\/'],
+            ['^\\.\\.(?!.*\\.[^/])', '^\\.\\./.*\\.[^/]'],
+            ['^\\.(?!.*\\.[^/])', '^\\./.*\\.[^/]'],
+            ['^.+\\.s?css$'],
+          ],
+        },
+      ],
       'simple-import-sort/exports': 'error',
     },
-  }
+  },
 ];
