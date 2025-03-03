@@ -1,19 +1,35 @@
 import { useHeader } from '@/hooks/useHeader';
 
-import { Circle, Horizontal, Plus, StyledHeader, Vertical } from './styled';
+import {
+  BurgerMenu,
+  Circle,
+  Horizontal,
+  MenuContent,
+  Plus,
+  StyledHeader,
+  Vertical,
+} from './styled';
 
 const Header = () => {
-  const { handleAddColumn } = useHeader();
+  const { handleAddColumn, toggleMenu, isMenuOpen } = useHeader();
 
   return (
     <StyledHeader>
-      <h1>Kanban Dashboard</h1>
-      <Circle onClick={handleAddColumn}>
-        <Plus>
-          <Vertical />
-          <Horizontal />
-        </Plus>
-      </Circle>
+      <BurgerMenu onClick={toggleMenu} isOpen={isMenuOpen}>
+        <span />
+        <span />
+        <span />
+      </BurgerMenu>
+
+      <MenuContent isOpen={isMenuOpen}>
+        <h1>Kanban Dashboard</h1>
+        <Circle onClick={handleAddColumn}>
+          <Plus>
+            <Vertical />
+            <Horizontal />
+          </Plus>
+        </Circle>
+      </MenuContent>
     </StyledHeader>
   );
 };

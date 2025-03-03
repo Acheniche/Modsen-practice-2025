@@ -16,4 +16,13 @@ export const TaskBoard = styled.div`
     scrollbar-width: none;
     margin: 0 auto;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 0px;
+    display: block;
+
+    & > div {
+      flex-direction: column;
+    }
+  }
 `;

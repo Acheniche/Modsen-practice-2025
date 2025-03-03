@@ -26,4 +26,7 @@ export const theme = {
   },
   cursor: 'pointer',
   border: 'none',
+  media: {
+    phone: '(max-width: 375px)',
+  },
 };

@@ -8,4 +8,9 @@ export const Column = styled.div<{ color: string }>`
   box-shadow: 0 2px 10px ${({ theme }) => theme.colors.dark_grey};
   height: fit-content;
   flex: 0 0 auto;
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 16px;
+    width: 100%;
+  }
 `;
