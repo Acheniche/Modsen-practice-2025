@@ -1,0 +1,15 @@
+export const TEXT = {
+  SAVE: 'Save',
+  TASK_TITLE: 'Task title',
+  TASK_DESCRIPTION: 'Task description',
+  ERROR_NAME: 'Uncaught error:',
+  ERROR: 'Sorry.. there was an error',
+  BOARD_NAME: 'Kanban Dashboard',
+  ADD_TASK: 'Add Task...',
+  EDIT: 'Edit',
+  DELETE: 'Delete',
+  NOT_FOUND_TITLE: '404 - Page Not Found',
+  NOT_FOUND_MESSAGE: 'Sorry, the page you are looking for does not exist.',
+  NOT_FOUND_HOME: 'Home',
+  NEW_COLUMN_BASE_NAME: 'New Column' as string,
+} as const;

@@ -1,15 +1,16 @@
-import { NEW_COLUMN_BASE_NAME } from '@/constants/tasks';
+import { TEXT } from '@constants/text';
+
 import { Task } from '@/types/Task';
 import { ColumnsState } from '@/types/tasks';
 
 export const generateUniqueColumnName = (
   existingColumns: ColumnsState,
 ): string => {
-  let newColumnName = NEW_COLUMN_BASE_NAME;
+  let newColumnName = TEXT.NEW_COLUMN_BASE_NAME;
   let counter = 1;
 
   while (existingColumns[newColumnName]) {
-    newColumnName = `${NEW_COLUMN_BASE_NAME} ${counter}`;
+    newColumnName = `${TEXT.NEW_COLUMN_BASE_NAME} ${counter}`;
     counter++;
   }
 

@@ -34,5 +34,3 @@ export const DEFAULT_COLUMN_CONFIG = {
     secondary: theme.colors.back_blue,
   },
 };
-
-export const NEW_COLUMN_BASE_NAME = 'New Column';

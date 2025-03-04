@@ -1,3 +1,5 @@
+import { TEXT } from '@constants/text';
+
 import { PRIORITY_OPTIONS } from '@/constants/priorities';
 import { useTaskCard } from '@/hooks/useTaskCard';
 import { TaskCardProps } from '@/types/TaskCardProps';
@@ -51,13 +53,17 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
               </option>
             ))}
           </Select>
-          <TitleInput value={title} onChange={handleTitleChange} />
+          <TitleInput
+            value={title}
+            onChange={handleTitleChange}
+            placeholder={TEXT.TASK_TITLE}
+          />
           <DescriptionInput
-            placeholder="Add description"
+            placeholder={TEXT.TASK_DESCRIPTION}
             value={description}
             onChange={handleDescriptionChange}
           />
-          <SaveButton onClick={handleSave}>Save</SaveButton>
+          <SaveButton onClick={handleSave}>{TEXT.SAVE}</SaveButton>
         </>
       ) : (
         <>
@@ -69,8 +75,10 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
             )}
             {isMenuOpen && (
               <MenuContainer>
-                <EditButton onClick={handleEdit}>Edit</EditButton>
-                <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+                <EditButton onClick={handleEdit}>{TEXT.EDIT}</EditButton>
+                <DeleteButton onClick={handleDelete}>
+                  {TEXT.DELETE}
+                </DeleteButton>
               </MenuContainer>
             )}
             <MenuButton onClick={toggleMenu}>

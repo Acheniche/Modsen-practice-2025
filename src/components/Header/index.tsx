@@ -1,3 +1,5 @@
+import { TEXT } from '@constants/text';
+
 import { useHeader } from '@/hooks/useHeader';
 
 import {
@@ -22,7 +24,7 @@ const Header = () => {
       </BurgerMenu>
 
       <MenuContent isOpen={isMenuOpen}>
-        <h1>Kanban Dashboard</h1>
+        <h1>{TEXT.BOARD_NAME}</h1>
         <Circle onClick={handleAddColumn}>
           <Plus>
             <Vertical />

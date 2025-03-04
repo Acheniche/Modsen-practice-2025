@@ -1,3 +1,5 @@
+import { TEXT } from '@constants/text';
+
 import { PRIORITY_OPTIONS } from '@/constants/priorities';
 import { useAddTask } from '@/hooks/useAddTask';
 import { AddTaskButtonProps } from '@/types/AddTaskButtonProps';
@@ -42,16 +44,16 @@ const AddTaskButton: React.FC<AddTaskButtonProps> = ({
             ))}
           </Select>
           <TitleInput
-            placeholder="Task title"
+            placeholder={TEXT.TASK_TITLE}
             value={title}
             onChange={handleTitleChange}
           />
           <DescriptionInput
-            placeholder="Add description"
+            placeholder={TEXT.TASK_DESCRIPTION}
             value={description}
             onChange={handleDescriptionChange}
           />
-          <SaveButton onClick={handleSave}>Save</SaveButton>
+          <SaveButton onClick={handleSave}>{TEXT.SAVE}</SaveButton>
         </TaskForm>
       ) : (
         <TaskButton

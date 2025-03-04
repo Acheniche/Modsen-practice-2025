@@ -1,6 +1,7 @@
 import AddTaskButton from '@components/AddTaskButton';
 import ColumnHeader from '@components/ColumnHeader';
 import TaskCard from '@components/TaskCard';
+import { TEXT } from '@constants/text';
 
 import { useDragAndDrop } from '@/hooks/useDragAndDrop';
 import { ColumnProps } from '@/types/ColumnProps';
@@ -38,7 +39,7 @@ const ProgressColumn: React.FC<ColumnProps> = ({
         buttonSecondaryColor={buttonSecondaryColor}
         column={title}
       >
-        Add Task...
+        {TEXT.ADD_TASK}
       </AddTaskButton>
     </Column>
   );
