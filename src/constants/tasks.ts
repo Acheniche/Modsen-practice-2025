@@ -1,4 +1,5 @@
-import { theme } from '@/styles';
+import { theme } from '@assets/styles';
+
 import { TasksState } from '@/types/tasks';
 
 export const INITIAL_TASKS_STATE: TasksState = {

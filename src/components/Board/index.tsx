@@ -1,8 +1,7 @@
+import { TaskBoard } from '@components/Board/styled';
+import ProgressColumn from '@components/ProgressColumn';
+
 import { useKanbanBoard } from '@/hooks/useKanbanBoard';
-
-import ProgressColumn from '../ProgressColumn';
-
-import { TaskBoard } from './styled';
 
 const KanbanBoard = () => {
   const { columns } = useKanbanBoard();

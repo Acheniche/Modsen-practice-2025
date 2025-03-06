@@ -1,12 +1,11 @@
 import AddTaskButton from '@components/AddTaskButton';
 import ColumnHeader from '@components/ColumnHeader';
+import { Column } from '@components/ProgressColumn/styled';
 import TaskCard from '@components/TaskCard';
 import { TEXT } from '@constants/text';
 
 import { useDragAndDrop } from '@/hooks/useDragAndDrop';
 import { ColumnProps } from '@/types/ColumnProps';
-
-import { Column } from './styled';
 
 const ProgressColumn: React.FC<ColumnProps> = ({
   title,

@@ -1,3 +1,4 @@
+import { theme } from '@assets/styles';
 import ErrorBoundary from '@components/ErrorBoundary/index.tsx';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -7,11 +8,9 @@ import { ThemeProvider } from 'styled-components';
 
 import KanbanBoard from '@/pages/KanbanBoard';
 import NotFound from '@/pages/NotFound';
-import { theme } from '@/styles';
+import store from '@/store';
 
-import store from './store';
-
-import './index.css';
+import '@assets/index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
