@@ -1,4 +1,4 @@
-import { theme } from '@assets/styles';
+import { theme } from '@theme/theme';
 
 import { TasksState } from '@/types/tasks';
 

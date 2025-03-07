@@ -1,3 +1,5 @@
+import { TEXT } from '@constants/text';
+
 import { useColumnHeader } from '@/hooks/useColumnHeader';
 import { ColumnHeaderComponentProps } from '@/types/ColumnHeaderComponentProps';
 
@@ -47,13 +49,14 @@ const ColumnHeader: React.FC<ColumnHeaderComponentProps> = ({
             value={newTitle}
             onChange={handleTitleChange}
             autoFocus
+            maxLength={20}
           />
           <input
             type="color"
             value={selectedColor}
             onChange={handleColorChange}
           />
-          <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+          <DeleteButton onClick={handleDelete}>{TEXT.DELETE}</DeleteButton>
         </>
       ) : (
         <StyledColumnHeader>{title}</StyledColumnHeader>

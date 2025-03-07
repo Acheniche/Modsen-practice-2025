@@ -31,6 +31,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     handleDelete,
     handleEdit,
     handleSave,
+    handleCancel,
     handleDragStart,
     handlePriorityChange,
     handleTitleChange,
@@ -64,6 +65,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
             onChange={handleDescriptionChange}
           />
           <SaveButton onClick={handleSave}>{TEXT.SAVE}</SaveButton>
+          <SaveButton onClick={handleCancel}>{TEXT.CANCEL}</SaveButton>
         </>
       ) : (
         <>

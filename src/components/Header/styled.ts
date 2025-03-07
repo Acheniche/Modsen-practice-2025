@@ -4,7 +4,7 @@ import { BurgerMenuProps } from '@/types/BurgerMenuProps';
 
 export const StyledHeader = styled.header`
   height: 104px;
-  max-width: 1004px;
+  max-width: 100%;
   background: ${({ theme }) => theme.colors.grey};
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@ export const MenuContent = styled.div.withConfig({
     padding: 20px 30px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: ${({ theme }) => theme.gap.XXL};
     z-index: 10;
   }
 `;

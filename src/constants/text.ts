@@ -8,6 +8,7 @@ export const TEXT = {
   ADD_TASK: 'Add Task...',
   EDIT: 'Edit',
   DELETE: 'Delete',
+  CANCEL: 'Cancel',
   NOT_FOUND_TITLE: '404 - Page Not Found',
   NOT_FOUND_MESSAGE: 'Sorry, the page you are looking for does not exist.',
   NOT_FOUND_HOME: 'Home',

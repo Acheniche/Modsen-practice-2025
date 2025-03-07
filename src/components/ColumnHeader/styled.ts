@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledColumnHeader = styled.h2`
   font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 22px;
   letter-spacing: -0.7%;
@@ -13,7 +13,7 @@ export const ColumnHeaderWrapper = styled.div<{ primary: string }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
+  gap: ${({ theme }) => theme.gap.L};
   border-radius: 24px;
   padding: 8px 12px 8px 8px;
   margin-bottom: 16px;
@@ -24,7 +24,7 @@ export const ColumnHeaderWrapper = styled.div<{ primary: string }>`
 export const TasksCounter = styled.div<{ primary: string }>`
   width: 33px;
   height: 32px;
-  gap: 8px;
+  gap: ${({ theme }) => theme.gap.M};
   border-radius: 32px;
   padding-top: 6px;
   padding-right: 12px;
@@ -32,7 +32,7 @@ export const TasksCounter = styled.div<{ primary: string }>`
   padding-left: 12px;
   background-color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.demiBold};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   line-height: 20px;
   letter-spacing: -0.6%;
@@ -72,7 +72,7 @@ export const Horizontal = styled.div`
 
 export const EditInput = styled.input<{ primary: string }>`
   font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 22px;
   letter-spacing: -0.7%;
@@ -87,13 +87,13 @@ export const EditInput = styled.input<{ primary: string }>`
 export const DeleteButton = styled.button`
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   cursor: ${({ theme }) => theme.cursor};
-  padding: 4px 8px;
-  border-radius: 12px;
+  padding: ${({ theme }) => theme.padding.button};
+  border-radius: ${({ theme }) => theme.border_radius.button};
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: ${({ theme }) => theme.gap.S};
   transition: box-shadow 0.3s;
-  font-weight: bold;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   border: ${({ theme }) => theme.border};
   color: ${({ theme }) => theme.colors.red};
   background: ${({ theme }) => theme.colors.back_red};

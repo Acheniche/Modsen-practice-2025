@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const TaskBoard = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  gap: 16px;
+  gap: ${({ theme }) => theme.gap.XL};
   padding: 32px;
   justify-content: left;
   overflow-x: hidden;
 
   & > div {
     display: flex;
-    gap: 16px;
+    gap: ${({ theme }) => theme.gap.XL};
     overflow-x: auto;
     padding-bottom: 10px;
     scrollbar-width: none;

@@ -30,6 +30,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@constants/*": ["src/constants/*"],
       "@assets/*": ["src/assets/*"],
+      "@theme/*": ["src/theme/*"],
       "@*": ["src/*"],
     }
   },

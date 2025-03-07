@@ -7,11 +7,11 @@ export const TaskButton = styled.button<{ primary: string; secondary: string }>`
   color: ${(props) => props.primary || (({ theme }) => theme.colors.purple)};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   cursor: ${({ theme }) => theme.cursor};
-  padding: 4px 8px;
-  border-radius: 12px;
+  padding: ${({ theme }) => theme.padding.button};
+  border-radius: ${({ theme }) => theme.border_radius.button};
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: ${({ theme }) => theme.gap.S};
   transition: box-shadow 0.3s;
 
   &:hover {
@@ -31,12 +31,12 @@ export const Container = styled.div`
 export const TaskForm = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: ${({ theme }) => theme.gap.M};
 `;
 
 export const Select = styled.select`
   font-famile: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.demiBold};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   line-height: 16px;
   letter-spacing: -0.5%;
@@ -45,7 +45,7 @@ export const Select = styled.select`
   border: ${({ theme }) => theme.border};
   text-align: center;
   background-color: ${({ theme }) => theme.colors.back_blue};
-  padding: 4px 8px;
+  padding: ${({ theme }) => theme.padding.button};
   border-radius: 20px;
   appearance: none;
   cursor: ${({ theme }) => theme.cursor};
@@ -55,7 +55,7 @@ export const Select = styled.select`
 
 export const TitleInput = styled.input`
   font-famile: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 22px;
   letter-spacing: -0.7%;
@@ -65,7 +65,7 @@ export const TitleInput = styled.input`
 
 export const DescriptionInput = styled.input`
   font-famile: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 400;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   line-height: 25.6px;
   letter-spacing: 0%;
@@ -75,7 +75,7 @@ export const DescriptionInput = styled.input`
 
 export const SaveButton = styled.button`
   font-famile: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 500;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   line-height: 20px;
   letter-spacing: -0.6%;

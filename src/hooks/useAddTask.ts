@@ -31,6 +31,10 @@ export const useAddTask = ({ column }: AddTaskProps) => {
     resetForm();
   }, [dispatch, column, title, description, priority, resetForm]);
 
+  const handleCancel = useCallback(() => {
+    resetForm();
+  }, [resetForm]);
+
   const handlePriorityChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       setPriority(e.target.value as PriorityType);
@@ -62,6 +66,7 @@ export const useAddTask = ({ column }: AddTaskProps) => {
     description,
     priority,
     handleSave,
+    handleCancel,
     handlePriorityChange,
     handleTitleChange,
     handleDescriptionChange,

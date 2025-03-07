@@ -23,10 +23,29 @@ export const theme = {
       medium: '14px',
       large: '16px',
     },
+    fontWeight: {
+      normal: '400',
+      medium: '500',
+      demiBold: '600',
+      bold: '700',
+    },
   },
   cursor: 'pointer',
   border: 'none',
   media: {
     phone: '(max-width: 375px)',
+  },
+  gap: {
+    S: '4px',
+    M: '8px',
+    L: '12px',
+    XL: '16px',
+    XXL: '20px',
+  },
+  padding: {
+    button: '4px 8px',
+  },
+  border_radius: {
+    button: '12px',
   },
 };

@@ -36,6 +36,10 @@ export const useTaskCard = (task: Task) => {
     setIsEditing(false);
   }, [dispatch, task.id, task.column, title, description, priority]);
 
+  const handleCancel = useCallback(() => {
+    setIsEditing(false);
+  }, []);
+
   const handleDragStart = useCallback(
     (event: React.DragEvent<HTMLDivElement>) => {
       setDragData(event, {
@@ -80,6 +84,7 @@ export const useTaskCard = (task: Task) => {
     handleDelete,
     handleEdit,
     handleSave,
+    handleCancel,
     handleDragStart,
     handlePriorityChange,
     handleTitleChange,

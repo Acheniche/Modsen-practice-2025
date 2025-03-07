@@ -26,6 +26,7 @@ const AddTaskButton: React.FC<AddTaskButtonProps> = ({
     description,
     priority,
     handleSave,
+    handleCancel,
     handlePriorityChange,
     handleTitleChange,
     handleDescriptionChange,
@@ -54,6 +55,7 @@ const AddTaskButton: React.FC<AddTaskButtonProps> = ({
             onChange={handleDescriptionChange}
           />
           <SaveButton onClick={handleSave}>{TEXT.SAVE}</SaveButton>
+          <SaveButton onClick={handleCancel}>{TEXT.CANCEL}</SaveButton>
         </TaskForm>
       ) : (
         <TaskButton

@@ -12,6 +12,7 @@ export default defineConfig({
       '@constants': path.resolve(__dirname, 'src/constants'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@assets': path.resolve(__dirname, 'src/assets'),
+      '@theme': path.resolve(__dirname, 'src/theme'),
       '@': path.resolve(__dirname, 'src/'),
     },
   },
