@@ -29,6 +29,18 @@ export const theme = {
       demiBold: '600',
       bold: '700',
     },
+    lineHeight: {
+      small: '16px',
+      normal: '20px',
+      medium: '22px',
+      large: '25,6px',
+    },
+    letterSpacing: {
+      small: '0%',
+      normal: '-0.5%',
+      medium: '-0.6%',
+      large: '-0.7%',
+    },
   },
   cursor: 'pointer',
   border: 'none',
@@ -47,5 +59,8 @@ export const theme = {
   },
   border_radius: {
     button: '12px',
+  },
+  boxShadow: {
+    button: '0 0 10px 5px',
   },
 };

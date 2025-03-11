@@ -4,8 +4,8 @@ export const StyledColumnHeader = styled.h2`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
-  line-height: 22px;
-  letter-spacing: -0.7%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.medium};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.large};
   color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -34,8 +34,8 @@ export const TasksCounter = styled.div<{ primary: string }>`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.demiBold};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  line-height: 20px;
-  letter-spacing: -0.6%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.medium};
   text-align: center;
   color: ${(props) => props.primary || (({ theme }) => theme.colors.purple)};
 `;
@@ -74,8 +74,8 @@ export const EditInput = styled.input<{ primary: string }>`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
-  line-height: 22px;
-  letter-spacing: -0.7%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.medium};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.large};
   border: ${({ theme }) => theme.border};
   outline: none;
   color: ${({ theme }) => theme.colors.white};
@@ -100,6 +100,7 @@ export const DeleteButton = styled.button`
   margin-left: auto;
 
   &:hover {
-    box-shadow: 0 0 10px 5px ${({ theme }) => theme.colors.back_red};
+    box-shadow: ${({ theme }) => theme.boxShadow.button}
+      ${({ theme }) => theme.colors.back_red};
   }
 `;

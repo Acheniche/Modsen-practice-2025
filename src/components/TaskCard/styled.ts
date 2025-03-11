@@ -23,7 +23,7 @@ export const StyledTaskCard = styled.div<{
   transition: 0.3s ease;
 
   &:hover {
-    box-shadow: 0 0 10px 5px
+    box-shadow: ${({ theme }) => theme.boxShadow.button}
       ${(props) =>
         props.priority === 'High'
           ? ({ theme }) => theme.colors.back_red
@@ -63,7 +63,7 @@ export const StyledPriorityLabel = styled.button<{
         : ({ theme }) => theme.colors.back_green};
 
   &:hover {
-    box-shadow: 0 0 10px 5px
+    box-shadow: ${({ theme }) => theme.boxShadow.button}
       ${(props) =>
         props.priority === 'High'
           ? ({ theme }) => theme.colors.back_red
@@ -77,8 +77,8 @@ export const StyledH3 = styled.h3`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
-  line-height: 22px;
-  letter-spacing: -0.7%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.medium};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.large};
   color: ${({ theme }) => theme.colors.title};
 `;
 
@@ -86,8 +86,8 @@ export const StyledP = styled.p`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
-  line-height: 25.6px;
-  letter-spacing: 0%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.large};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.small};
   color: ${({ theme }) => theme.colors.description};
 `;
 
@@ -106,7 +106,8 @@ export const DeleteButton = styled.button`
   background: ${({ theme }) => theme.colors.back_red};
 
   &:hover {
-    box-shadow: 0 0 10px 5px ${({ theme }) => theme.colors.back_red};
+    box-shadow: ${({ theme }) => theme.boxShadow.button}
+      ${({ theme }) => theme.colors.back_red};
   }
 `;
 
@@ -120,8 +121,8 @@ export const TitleInput = styled.input`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
-  line-height: 22px;
-  letter-spacing: -0.7%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.medium};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.large};
   color: ${({ theme }) => theme.colors.title};
   border: ${({ theme }) => theme.border};
 `;
@@ -130,8 +131,8 @@ export const DescriptionInput = styled.input`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
-  line-height: 25.6px;
-  letter-spacing: 0%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.large};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.small};
   color: ${({ theme }) => theme.colors.description};
   border: ${({ theme }) => theme.border};
 `;
@@ -140,8 +141,8 @@ export const SaveButton = styled.button`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.demiBold};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  line-height: 20px;
-  letter-spacing: -0.6%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.medium};
   color: ${({ theme }) => theme.colors.description};
   border: ${({ theme }) => theme.border};
   cursor: ${({ theme }) => theme.cursor};
@@ -155,12 +156,11 @@ export const Select = styled.select`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeight.demiBold};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
-  line-height: 16px;
-  letter-spacing: -0.5%;
+  line-height: ${({ theme }) => theme.typography.lineHeight.small};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.normal};
   text-align: center;
   color: ${({ theme }) => theme.colors.black};
   border: ${({ theme }) => theme.border};
-  text-align: center;
   background-color: ${({ theme }) => theme.colors.back_blue};
   padding: ${({ theme }) => theme.padding.button};
   border-radius: 20px;
@@ -186,7 +186,8 @@ export const EditButton = styled.button`
   background: ${({ theme }) => theme.colors.back_yellow};
 
   &:hover {
-    box-shadow: 0 0 10px 5px ${({ theme }) => theme.colors.back_yellow};
+    box-shadow: ${({ theme }) => theme.boxShadow.button}
+      ${({ theme }) => theme.colors.back_yellow};
   }
 `;
 
